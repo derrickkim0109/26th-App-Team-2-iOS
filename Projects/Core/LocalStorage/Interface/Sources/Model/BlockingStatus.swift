@@ -89,7 +89,18 @@ public enum BlockingStatus: Codable, Equatable {
         }
     }
 
-    // MARK: Example 용
+    public var notificationId: String {
+        switch self {
+        case .blocking,
+             .unlockedTemporarily,
+             .extensionPrompt
+            :
+            return "BrakeNotification"
+        case .cooldownActive:
+            return "BrakeCooldownNotification"
+        }
+    }
+
     public var title: String {
         switch self {
         case .blocking(let name):
